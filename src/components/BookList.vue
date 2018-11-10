@@ -7,16 +7,20 @@
             >
             </book-item>
         </ul>
+        <hr>
+        <book-form @addBook='appendBook'></book-form>
     </div>
 </template>
 
 <script>
 import BookItem from './BookItem';
+import BookForm from './BookForm';
 
     export default {
         name: 'BookList',
         components: {
-            BookItem
+            BookItem,
+            BookForm
         }, 
         data() {
             return{
@@ -27,6 +31,11 @@ import BookItem from './BookItem';
                     {title: 'Amusing Ourselves to Death', author: 'Neil Postman'},
                 ]
             } 
+        },
+        methods: {
+            appendBook(bookTitle, bookAuthor) {
+                this.books.push({title: bookTitle, author: bookAuthor})
+            }
         } 
     }
 </script>
